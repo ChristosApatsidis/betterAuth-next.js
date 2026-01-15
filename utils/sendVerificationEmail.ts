@@ -1,22 +1,11 @@
 // utils/sendVerificationEmail.ts
-import nodemailer from "nodemailer";
+import { Resend } from 'resend';
+
+const resend = new Resend(process.env.RESEND_API_KEY as string);
 
 /**
  * Sends a verification email to the specified user with a verification link.
- *
- * @param user - An object containing the user's email and name.
- * @param url - The verification URL to be included in the email.
- *
- * @remarks
- * This function uses Nodemailer to send an email with both plain text and HTML content.
- * SMTP configuration is read from environment variables:
- * - `SMTP_HOST`
- * - `SMTP_PORT`
- * - `SMTP_AUTH_USER`
- * - `SMTP_AUTH_PASS`
- *
- * If an error occurs during the email sending process, it is logged to the console.
- */
+*/
 export default function sendVerificationEmail(
   user: { 
     email: string, 
@@ -25,28 +14,13 @@ export default function sendVerificationEmail(
   url: string
 ) {
   try {
-    // Create a transporter
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: Number(process.env.SMTP_PORT),
-      secure: true,
-      auth: {
-        user: process.env.SMTP_AUTH_USER,
-        pass: process.env.SMTP_AUTH_PASS,
-      },
-    });
-
-    // Send mail
-    transporter.sendMail({
-      from: `"No Reply ${process.env.SMTP_AUTH_USER}" <${process.env.SMTP_AUTH_USER}>`,
+    resend.emails.send({
+      from: `Christos Apatsidis <${process.env.SMTP_HOST}>`,
       to: user.email,
       subject: "Verify your email address",
       text: `Click the link to verify your email: ${url}`,
       html: `<p><a href=${url}>Click here to verify your email</a></p>`,
     });
-
-    // Close the transporter
-    transporter.close();
     return;
   } catch (error) {
     console.error("Error sending verification email:", error);

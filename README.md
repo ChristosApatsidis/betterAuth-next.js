@@ -45,9 +45,7 @@ BETTER_AUTH_GOOGLE_SECRET=    # Google OAuth Client Secret
 MONGODB_URI=                  # MongoDB connection string
 
 SMTP_HOST=                    # SMTP server host (e.g., smtp.ethereal.email)
-SMTP_PORT=                    # SMTP server port (e.g., 587)
-SMTP_AUTH_USER=               # SMTP username (email address)
-SMTP_AUTH_PASS=               # SMTP password password
+RESEND_API_KEY=               # Resend API key
 ```
 
 ## License
