@@ -11,7 +11,7 @@ const nextConfig: NextConfig = {
     ];
   },
   images: {
-    domains: ["lh3.googleusercontent.com"],
+    domains: ["lh3.googleusercontent.com", "better-auth-nextjs-kloixa3r5-christos-apatsidis-projects.vercel.app"],
   },
 };
 
