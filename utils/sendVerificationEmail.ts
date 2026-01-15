@@ -29,6 +29,7 @@ export default function sendVerificationEmail(
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port: Number(process.env.SMTP_PORT),
+      secure: true,
       auth: {
         user: process.env.SMTP_AUTH_USER,
         pass: process.env.SMTP_AUTH_PASS,
@@ -37,11 +38,11 @@ export default function sendVerificationEmail(
 
     // Send mail
     transporter.sendMail({
-      from: `"Auth" <${process.env.SMTP_AUTH_USER}>`,
+      from: `"No Reply ${process.env.SMTP_AUTH_USER}" <${process.env.SMTP_AUTH_USER}>`,
       to: user.email,
       subject: "Verify your email address",
       text: `Click the link to verify your email: ${url}`,
-      html: `<p><a href=${url} target="_blank">Click here to verify your email</a></p>`,
+      html: `<p><a href=${url}>Click here to verify your email</a></p>`,
     });
 
     // Close the transporter
