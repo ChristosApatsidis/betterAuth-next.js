@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  basePath: "",
   async redirects() {
     return [
       {
@@ -11,7 +12,11 @@ const nextConfig: NextConfig = {
     ];
   },
   images: {
-    domains: ["lh3.googleusercontent.com", "better-auth-nextjs-kloixa3r5-christos-apatsidis-projects.vercel.app"],
+    domains: [
+      "lh3.googleusercontent.com", 
+      "i.sstatic.net",
+      "better-auth-nextjs-user-authentication.vercel.app"
+    ],
   },
 };
 

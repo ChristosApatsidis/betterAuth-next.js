@@ -14,9 +14,9 @@ export default function SignInButton(props: {
       onClick={async () => {
         await authClient.signIn.social({
           provider: props.provider,
-          callbackURL: "/", 
-          errorCallbackURL: "/error",
-          newUserCallbackURL: "/"
+          callbackURL: window.location.href, 
+          errorCallbackURL: `${window.location.href}/error`,
+          newUserCallbackURL: window.location.href
         });
       }}
       className={`${props.className}`} 

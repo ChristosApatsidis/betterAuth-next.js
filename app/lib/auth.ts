@@ -12,9 +12,8 @@ const db = client.db();
 
 export const auth = betterAuth({
   baseURL: process.env.BETTER_AUTH_URL as string,
+  basePath: "/api/auth",
   trustedOrigins: [
-    "http://localhost:3000",
-    "http://*:3000",
     process.env.BETTER_AUTH_URL as string,
   ],
   rateLimit: {
@@ -43,9 +42,10 @@ export const auth = betterAuth({
   },
   socialProviders: { 
     google: { 
+      enabled: true,
       clientId: process.env.BETTER_AUTH_GOOGLE_ID as string, 
       clientSecret: process.env.BETTER_AUTH_GOOGLE_SECRET as string,
-      scope: ['email','profile'],
+      scope: ['email','profile']
     }
   }, 
   account: {
