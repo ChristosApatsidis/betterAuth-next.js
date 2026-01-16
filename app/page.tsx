@@ -28,7 +28,7 @@ function Banner() {
         <ul className="list-disc list-inside space-y-1 mb-4">
           <li>Sign Up and Sign In functionality with email/password and third-party providers.</li>
           <li>User profile management.</li>
-          <li>Password reset and email verification.</li>
+          <li>Email verification using Resend API.</li>
         </ul>
         <div>
           Created with ❤️ by <a href="https://christosapatsidis.com" target="_blank" className="underline text-blue-400">Christos Apatsidis</a>
